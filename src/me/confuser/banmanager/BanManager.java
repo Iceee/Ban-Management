@@ -18,7 +18,6 @@ import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
-import java.io.IOException;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
@@ -225,26 +224,13 @@ public class BanManager extends JavaPlugin {
 			// Sync events
 			getServer().getPluginManager().registerEvents(new SyncLogin(plugin), this);
 			getServer().getPluginManager().registerEvents(new SyncChat(plugin), this);
-		} else if (getServer().getOnlineMode()) { // If server is in online mode
-			// and syncChat is off, use
-			// async events
-			getServer().getPluginManager().registerEvents(new AsyncPreLogin(plugin), this);
-			getServer().getPluginManager().registerEvents(new AsyncChat(plugin), this);
-		} else { // Otherwise use the normal sync login event and use Async chat
-			// even for mutes.
-			getServer().getPluginManager().registerEvents(new SyncLogin(plugin), this);
-			getServer().getPluginManager().registerEvents(new AsyncChat(plugin), this);
-		}
+		} else { //Do async like you're told
+            getServer().getPluginManager().registerEvents(new AsyncPreLogin(plugin), this);
+            getServer().getPluginManager().registerEvents(new AsyncChat(plugin), this);
+        }
 
 		// Register the blacklist check event for mutes
 		getServer().getPluginManager().registerEvents(new MutedBlacklistCheck(plugin), this);
-
-		try {
-			MetricsLite metrics = new MetricsLite(this);
-			metrics.start();
-		} catch (IOException e) {
-			// Failed to submit the stats :-(
-		}
 
 		getLogger().info("Version " + getDescription().getVersion() + " has been enabled");
 
