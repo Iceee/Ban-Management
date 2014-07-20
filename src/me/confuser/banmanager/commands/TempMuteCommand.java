@@ -1,14 +1,13 @@
 package me.confuser.banmanager.commands;
 
-import java.util.List;
-
 import me.confuser.banmanager.BanManager;
 import me.confuser.banmanager.Util;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.List;
 
 public class TempMuteCommand implements CommandExecutor {
 
@@ -115,7 +114,7 @@ public class TempMuteCommand implements CommandExecutor {
 
 				plugin.addPlayerMute(playerName, mutedByName, reason, timeExpires);
 
-				String infoMessage = plugin.getMessage("playerTempMuted").replace("[expires]", formatExpires).replace("[name]", playerName).replace("[displayName]", playerDisplayName);
+				String infoMessage = plugin.getMessage("playerTempMuted").replace("[expires]", formatExpires).replace("[name]", playerName).replace("[displayName]", playerDisplayName).replace("[reason]", viewReason);
 
 				plugin.getServer().getConsoleSender().sendMessage(infoMessage);
 

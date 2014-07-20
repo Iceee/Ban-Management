@@ -1,15 +1,14 @@
 package me.confuser.banmanager.commands;
 
-import java.util.List;
-
 import me.confuser.banmanager.BanManager;
 import me.confuser.banmanager.Util;
-
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.List;
 
 public class BanCommand implements CommandExecutor {
 
@@ -127,7 +126,7 @@ public class BanCommand implements CommandExecutor {
 
 		plugin.addPlayerBan(playerName, bannedByName, reason);
 
-		String infoMessage = plugin.getMessage("playerBanned").replace("[name]", playerName).replace("[displayName]", playerDisplayName);
+		String infoMessage = plugin.getMessage("playerBanned").replace("[name]", playerName).replace("[displayName]", playerDisplayName).replace("[reason]", viewReason);
 
 		plugin.getServer().getConsoleSender().sendMessage(infoMessage);
 

@@ -1,14 +1,13 @@
 package me.confuser.banmanager.commands;
 
-import java.util.List;
-
 import me.confuser.banmanager.BanManager;
 import me.confuser.banmanager.Util;
-
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.List;
 
 public class MuteCommand implements CommandExecutor {
 
@@ -100,7 +99,7 @@ public class MuteCommand implements CommandExecutor {
 				if (!sender.hasPermission("bm.notify.mute"))
 					Util.sendMessage(sender, infoMessage);
 
-				String message = plugin.getMessage("mute").replace("[displayName]", playerDisplayName).replace("[name]", playerName).replace("[reason]", viewReason).replace("[by]", mutedByName);
+				String message = plugin.getMessage("mute").replace("[displayName]", playerDisplayName).replace("[name]", playerName).replace("[reason]", viewReason).replace("[by]", mutedByName).replace("[reason]", viewReason);
 				Util.sendMessageWithPerm(message, "bm.notify.mute");
 
 				if (online) {

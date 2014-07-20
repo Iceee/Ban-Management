@@ -1,15 +1,14 @@
 package me.confuser.banmanager.commands;
 
-import java.util.List;
-
 import me.confuser.banmanager.BanManager;
 import me.confuser.banmanager.Util;
-
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+
+import java.util.List;
 
 public class TempBanCommand implements CommandExecutor {
 
@@ -150,7 +149,7 @@ public class TempBanCommand implements CommandExecutor {
 
 		plugin.addPlayerBan(playerName, bannedByName, reason, timeExpires);
 
-		String infoMessage = plugin.getMessage("playerTempBanned").replace("[expires]", formatExpires).replace("[name]", playerName).replace("[displayName]", playerDisplayName);
+		String infoMessage = plugin.getMessage("playerTempBanned").replace("[expires]", formatExpires).replace("[name]", playerName).replace("[displayName]", playerDisplayName).replace("[reason]", viewReason);
 
 		plugin.getServer().getConsoleSender().sendMessage(infoMessage);
 
